@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TERRANEST.HEALTH - TATA AIG Insurance</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #003366;
+            --accent-color: #e63946;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333333;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .tata-blue {
+            background-color: var(--primary-color);
+        }
+        
+        .tata-red {
+            color: var(--accent-color);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background-color: #00264d;
+            transform: translateY(-2px);
+        }
+        
+        .btn-accent {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .btn-accent:hover {
+            background-color: #d32638;
+            transform: translateY(-2px);
+        }
+        
+        .section {
+            padding: 60px 20px;
+        }
+        
+        .card {
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            background: white;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-link {
+            position: relative;
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .feature-icon {
+            background-color: rgba(0, 51, 102, 0.1);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .feature-icon i {
+            color: var(--primary-color);
+            font-size: 24px;
+        }
+        
+        .plan-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+        
+        .plan-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 5px 15px rgba(0, 51, 102, 0.1);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-link {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .footer-link:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 600px;
+            position: relative;
+            animation: modalFadeIn 0.4s;
+        }
+        
+        @keyframes modalFadeIn {
+            from {opacity: 0; transform: translateY(-30px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        /* Admin instructions (hidden by default) */
+        #admin-instructions {
+            display: none;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        #admin-instructions.show {
+            display: block;
+        }
+        
+        /* Mobile menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--primary-color);
+            z-index: 999;
+            padding: 60px 20px 20px;
+        }
+        
+        .mobile-menu.active {
+            display: block;
+        }
+        
+        .mobile-menu-link {
+            display: block;
+            color: white;
+            font-size: 18px;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 28px;
+        }
+        
+        /* Hide elements initially for modal display */
+        .plan-details, .about-page, .network-hospitals-page, .claims-process-page, .privacy-policy-page, .terms-page, .grievance-page, .disclaimer-page {
+            display: none;
+        }
+        
+        /* WhatsApp button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 99;
+            transition: all 0.3s;
+        }
+        
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+        
+        .whatsapp-button i {
+            font-size: 30px;
+        }
+        
+        /* Thank you message */
+        .thank-you-message {
+            display: none;
+            text-align: center;
+            padding: 30px;
+            background-color: #f0f9ff;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 1px solid #bae6fd;
+        }
+        
+        /* Show active page/section */
+        .active-page {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .desktop-nav {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .form-container {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/917012446315" class="whatsapp-button" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Header -->
+    <header class="tata-blue py-4 sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="text-white font-bold text-2xl">TERRANEST.HEALTH</div>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="desktop-nav hidden md:block">
+                    <ul class="flex">
+                        <li><a href="#home" class="nav-link">HOME</a></li>
+                        <li><a href="#" class="nav-link" onclick="showPage('plans')">OUR PLANS</a></li>
+                        <li><a href="#" class="nav-link" onclick="showPage('about')">ABOUT US</a></li>
+                        <li><a href="#quote" class="btn-accent ml-4">GET MY QUOTE</a></li>
+                    </ul>
+                </nav>
+                
+                <!-- Mobile Menu Toggle -->
+                <div class="md:hidden">
+                    <button class="menu-toggle text-white text-2xl" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <span class="close-menu" onclick="toggleMobileMenu()"><i class="fas fa-times"></i></span>
+        <nav>
+            <a href="#home" class="mobile-menu-link" onclick="toggleMobileMenu()">HOME</a>
+            <a href="#plans" class="mobile-menu-link" onclick="toggleMobileMenu()">OUR PLANS</a>
+            <a href="#" class="mobile-menu-link" onclick="showPage('about'); toggleMobileMenu()">ABOUT US</a>
+            <a href="#quote" class="mobile-menu-link" onclick="toggleMobileMenu()">GET MY QUOTE</a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="section bg-gray-100">
+            <div class="container mx-auto">
+                <div class="text-center mb-8">
+                    <h1 class="text-4xl font-bold mb-4">Secure Your Health with TATA AIG Insurance</h1>
+                    <p class="text-xl mb-6">Get Your Free Quote Today – Fast, Simple & Trusted by Millions!</p>
+                    <div class="flex flex-wrap justify-center gap-6 mb-8">
+                        <div class="flex items-center">
+                            <i class="fas fa-hospital text-blue-600 mr-2"></i>
+                            <span>✅ 5400+ Network Hospitals</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-money-check-alt text-blue-600 mr-2"></i>
+                            <span>✅ Cashless Claims Process</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-tax text-blue-600 mr-2"></i>
+                            <span>✅ Tax Benefits under 80D</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-headset text-blue-600 mr-2"></i>
+                            <span>✅ Expert Support for Hassle-free Process</span>
+                        </div>
+                    </div>
+                    <a href="#quote" class="btn-primary text-lg">Get Your Free Quote</a>
+                </div>
+            </div>
+        </section>
+
+<!-- Why Do You Need a Health Insurance Policy Section -->
+<section class="section bg-white py-16">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center text-blue-900 mb-12">Why Do You Need a Health Insurance Policy?</h2>
+        <div class="grid md:grid-cols-2 gap-10 text-blue-800 text-lg">
+          <div>
+            <h3 class="font-semibold mb-2">🩺 Chronic Disease Management</h3>
+            <p>Non-communicable diseases like cancer, heart disease, diabetes, asthma, etc., account for nearly 71% of all fatalities. Your health insurance policy can help pay for long-term treatment since these costs can quickly add up.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-2">💰 Rising Medical Costs</h3>
+            <p>Healthcare costs have increased drastically over the years, making it harder for people to access healthcare. A health insurance plan can help pay for your medical costs, including diagnostic costs before hospitalisation, prescription medication and follow-up consultations.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-2">🔐 Financial Security</h3>
+            <p>A health insurance plan can help shield your savings by paying for your treatment costs. This way, your hard-earned savings stay safe, and you get the medical care you need without having to worry about financial implications.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-2">📋 Comprehensive Health Coverage</h3>
+            <p>TATA AIG’s health insurance plans cover a wide range of illnesses from COVID-19, cancer and kidney failure to preventive care like checkups, vaccinations, and wellness programs—ensuring total protection.</p>
+          </div>
+            <div class="md:col-span-2 flex justify-center">
+             <div class="max-w-2xl text-center">
+              <h3 class="font-semibold mb-2">😇 For Peace of Mind</h3>
+            <p class="text-left">Not having to second-guess the need for medical care can be a huge relief, especially during emergencies. A health insurance policy acts as a safety net, so you don’t have to worry about going into debt over an unexpected medical emergency. This lets you focus on recovery while your policy takes care of the medical costs.</p>
+             </div>
+         </div>
+        </div>
+      </div>
+    </section>
+    
+
+<!-- Key Features Section -->
+<section class="section bg-blue-50 py-16">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center text-blue-900 mb-12">Key Features of Standard TATA AIG Health Insurance Plans</h2>
+    <div class="overflow-x-auto">
+      <table class="table-auto w-full text-left border border-blue-200 bg-white text-blue-800">
+        <thead class="bg-blue-100">
+          <tr>
+            <th class="p-4 border border-blue-200 font-semibold">Features</th>
+            <th class="p-4 border border-blue-200 font-semibold">Tata AIG Health Insurance Benefits</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="p-4 border border-blue-200">Affordable Premium</td>
+            <td class="p-4 border border-blue-200">Our health insurance plans start at affordable premiums</td>
+          </tr>
+          <tr>
+            <td class="p-4 border border-blue-200">Sum Insured</td>
+            <td class="p-4 border border-blue-200">Wide range of Sum Insured options of up to ₹3 Crores</td>
+          </tr>
+          <tr>
+            <td class="p-4 border border-blue-200">Discounts</td>
+            <td class="p-4 border border-blue-200">Extensive discounts based on the policy tenure (up to 10%) and the number of members included in family floater plans (up to 32%)</td>
+          </tr>
+          <tr>
+            <td class="p-4 border border-blue-200">Network of Hospitals</td>
+            <td class="p-4 border border-blue-200">Over 12,000 hospitals across India</td>
+          </tr>
+          <tr>
+            <td class="p-4 border border-blue-200">Hospitalisation Expenses</td>
+            <td class="p-4 border border-blue-200">For the treatment of any medical condition covered in the policy</td>
+          </tr>
+          <tr>
+            <td class="p-4 border border-blue-200">Pre-and Post-Hospitalisation Expenses</td>
+            <td class="p-4 border border-blue-200">For the treatment before admission and after discharge</td>
+          </tr>
+          <tr>
+            <td class="p-4 border border-blue-200">Coverage for Daycare Procedures</td>
+            <td class="p-4 border border-blue-200">For more than 540 daycare procedures</td>
+          </tr>
+          <tr>
+            <td class="p-4 border border-blue-200">AYUSH</td>
+            <td class="p-4 border border-blue-200">Coverage for Ayurveda, Yoga, Unani, Siddha or Homeopathy</td>
+          </tr>
+          <tr>
+            <td class="p-4 border border-blue-200">Online Claim Processes</td>
+            <td class="p-4 border border-blue-200">Quick and hassle-free online claim processes</td>
+          </tr>
+          <tr>
+            <td class="p-4 border border-blue-200">Worldwide Cover</td>
+            <td class="p-4 border border-blue-200">For an overseas treatment and also for the ailment diagnosed in India and treated overseas</td>
+          </tr>
+          <tr>
+            <td class="p-4 border border-blue-200">Wide range of Additional Covers</td>
+            <td class="p-4 border border-blue-200">Maternity Cover, OPD Cover, Consumables Cover and more</td>
+          </tr>
+          <tr>
+            <td class="p-4 border border-blue-200">Automatic Restoration</td>
+            <td class="p-4 border border-blue-200">Automatic refilling or restoration of the sum insured</td>
+          </tr>
+          <tr>
+            <td class="p-4 border border-blue-200">Cumulative Bonus</td>
+            <td class="p-4 border border-blue-200">Bonus between 5-50% of Sum Insured every year</td>
+          </tr>
+          <tr>
+            <td class="p-4 border border-blue-200">Preventive Health Checkup</td>
+            <td class="p-4 border border-blue-200">Annual Preventive health check-ups at our network</td>
+          </tr>
+          <tr>
+            <td class="p-4 border border-blue-200">Tax Benefits</td>
+            <td class="p-4 border border-blue-200">Tax deduction up to ₹1 lakh on health insurance premiums under Section 80D</td>
+          </tr>
+          <tr>
+            <td class="p-4 border border-blue-200">Customer Support</td>
+            <td class="p-4 border border-blue-200">24/7 customer assistance</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+        
+<section class="section bg-blue-50 py-16">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-blue-900 mb-12">Compare our Best TATA AIG Health Insurance Plans with our Agents</h2>
+      <div class="overflow-x-auto"></div>
+    </div>
+</section>
+
+        <!-- Quote Form Section -->
+        <section id="quote" class="section bg-gray-100">
+            <div class="container mx-auto">
+                <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold mb-6 text-center">Get Your Personalized Quote</h2>
+                    <p class="mb-6 text-center">Fill in your details to get a personalized insurance quote.</p>
+                    
+                    <form id="quoteForm">
+                        <div class="mb-4">
+                            <input type="text" id="fullName" name="fullName" class="form-control" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="mb-4">
+                            <input type="date" id="dob" name="dob" class="form-control" placeholder="Enter your date of birth" required>
+                        </div>
+                        <div class="mb-4">
+                            <input type="text" id="place" name="place" class="form-control" placeholder="Enter your location" required>
+                        </div>
+                        <div class="mb-4">
+                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="Enter your phone number" required>
+                        </div>
+                        <div class="mb-4">
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email address" required>
+                        </div>
+                        <button type="submit" class="btn-primary w-full">CONTINUE</button>
+                    </form>
+                    
+                    <div id="thankYouMessage" class="thank-you-message">
+                        <i class="fas fa-check-circle text-green-500 text-4xl mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Thank you for choosing TERRANEST.HEALTH!</h3>
+                        <p>Our agent will contact you shortly.</p>
+                    </div>
+                    
+                    <div class="mt-4 text-center text-sm text-gray-600">
+                        <p><i class="fas fa-lock mr-1"></i> Your data is secure and confidential</p>
+                        <p class="mt-2">Powered by TATA AIG | SSL Secured</p>
+                    </div>
+                </div>
+                
+                <!-- Admin Instructions (Hidden by default) -->
+                <div id="admin-instructions">
+                    <h3 class="text-xl font-bold mb-4">Google Sheets Integration Setup Instructions</h3>
+                    <p class="mb-4">Follow these steps to connect your form to Google Sheets:</p>
+                    <ol class="list-decimal pl-5 mb-6">
+                        <li class="mb-2">Create a new <a href="https://forms.google.com/" target="_blank" class="text-blue-600 underline">Google Form</a> with the following fields:</li>
+                        <ul class="list-disc pl-5 mb-3">
+                            <li>Full Name (Short Answer)</li>
+                            <li>Date of Birth (Date)</li>
+                            <li>Place (Short Answer)</li>
+                            <li>Phone Number (Short Answer)</li>
+                            <li>Email Address (Short Answer)</li>
+                        </ul>
+                        <li class="mb-2">Click the "Responses" tab in your Google Form</li>
+                        <li class="mb-2">Click the Google Sheets icon to create a linked spreadsheet</li>
+                        <li class="mb-2">Name the spreadsheet "TERRANEST.HEALTH Lead Data"</li>
+                        <li class="mb-2">Click "Send" on your Google Form and copy the form URL</li>
+                        <li class="mb-2">Open the JavaScript section of this HTML file and replace the example URL with your Google Form URL</li>
+                        <li class="mb-2">Update the field names in the script to match your form's field names (you can find these by inspecting your form)</li>
+                    </ol>
+                    <p class="font-bold">Important Notes:</p>
+                    <ul class="list-disc pl-5">
+                        <li>The form must be public or accessible to anyone with the link</li>
+                        <li>Field names in the script must exactly match your Google Form's field names</li>
+                        <li>Test the form submission to ensure data is being recorded correctly</li>
+                    </ul>
+                    <p class="mt-4">To show/hide these instructions, press the key combination <strong>Ctrl + Shift + I</strong></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    
+
+    <!-- About Us Page -->
+    <div id="about-page" class="about-page modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closePage()">&times;</span>
+            <h2 class="text-2xl font-bold mb-4">About TERRANEST.HEALTH</h2>
+            <div class="mb-6">
+                <p class="mb-4">We are TERRANEST.HEALTH, a trusted insurance broker partnered with TATA AIG to provide expert guidance on health insurance plans. Our mission is to simplify insurance for every Indian family.</p>
+                <p class="mb-4">At TERRANEST.HEALTH, we understand that navigating health insurance options can be overwhelming. That's why we're committed to providing clear, straightforward information and personalized guidance to help you make the best choices for your health and financial security.</p>
+                <p class="mb-4">As an independent broker, we work with you to understand your unique needs and find the TATA AIG plan that offers the right coverage at the right price. We pride ourselves on our customer-first approach, transparent communication, and ongoing support throughout your insurance journey.</p>
+                <p class="font-bold">Note: We are an independent broker, not the official TATA AIG website.</p>
+            </div>
+            <div class="mb-6">
+                <h3 class="text-xl font-bold mb-2">Our Services</h3>
+                <ul class="list-disc pl-5">
+                    <li>Personalized insurance consultation</li>
+                    <li>Policy comparison and recommendations</li>
+                    <li>Assistance with application process</li>
+                    <li>Ongoing policy management support</li>
+                    <li>Claims assistance</li>
+                </ul>
+            </div>
+            <div class="mb-6">
+                <h3 class="text-xl font-bold mb-2">Why Choose Us?</h3>
+                <ul class="list-disc pl-5">
+                    <li>Expert knowledge of TATA AIG health insurance products</li>
+                    <li>Personalized service tailored to your needs</li>
+                    <li>Transparent communication with no hidden charges</li>
+                    <li>Ongoing support throughout your policy lifecycle</li>
+                    <li>Quick response to all your queries and concerns</li>
+                </ul>
+            </div>
+            <a href="#quote" class="btn-primary block text-center" onclick="closePage()">GET YOUR QUOTE</a>
+        </div>
+    </div>
+
+    <!-- Our Plans Page Modal -->
+            <div id="plans-page" class="plan-details modal">
+             <div class="modal-content">
+                <span class="close-modal" onclick="closePage()">&times;</span>
+                <h2 class="text-2xl font-bold mb-4">Our Plans</h2>
+                <div class="mb-6">
+                 <p class="mb-4">We provide carefully selected TATA AIG health plans tailored for individuals, families, and senior citizens. Our plans combine <strong>affordable premiums</strong> with <strong>generous benefits</strong> — ensuring you’re protected without breaking the bank.</p>
+                 <p class="mb-4">Contact us today to receive a personalized plan recommendation based on your needs. Our team will assist you in understanding benefits, exclusions, and assist you through the application process.</p>
+                 <ul class="list-disc pl-5 mb-4">
+                    <li>Low premiums starting from ₹10/day</li>
+                    <li>Coverage for hospitalization, AYUSH, critical illness & more</li>
+                    <li>Customizable options for self, spouse, children & parents</li>
+                    <li>Instant help via WhatsApp or phone</li>
+                    </ul>
+                </div>
+            <a href="#quote" class="btn-primary block text-center" onclick="closePage()">GET YOUR QUOTE</a>
+             </div>
+            </div>
+  
+    <!-- Network Hospitals Page -->
+    <div id="network-hospitals-page" class="network-hospitals-page modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closePage()">&times;</span>
+            <h2 class="text-2xl font-bold mb-4">TATA AIG Network Hospitals</h2>
+            <div class="mb-6">
+                <p class="mb-4">TATA AIG offers cashless hospitalization across 12,000+ network hospitals throughout India, ensuring easy hospitalization, seamless claim settlement, and quality treatment.</p>
+                
+                <h3 class="text-xl font-bold mb-2">How Cashless System Works</h3>
+                <p class="mb-4">When you buy a TATA AIG health insurance policy, you receive access to a network of authorized medical facilities where you can receive cashless treatment. This means you or your family don't have to pay treatment bills at these hospitals, as they're directly settled by TATA AIG (subject to policy coverage and terms).</p>
+                
+                <h3 class="text-xl font-bold mb-2">Cashless Claim Process</h3>
+                <ol class="list-decimal pl-5 mb-4">
+                    <li>Locate a TATA AIG network hospital in your area</li>
+                    <li>For planned treatments, inform TATA AIG 3 days before hospitalization</li>
+                    <li>For emergencies, inform within 24 hours</li>
+                    <li>Bring essential documents (policy, insurance card, ID proof)</li>
+                    <li>Fill necessary pre-procedural forms at the hospital</li>
+                    <li>TATA AIG will review and release an authorization letter</li>
+                    <li>The amount is settled directly with the hospital</li>
+                </ol>
+                
+                <h3 class="text-xl font-bold mb-2">Key Benefits</h3>
+                <ul class="list-disc pl-5 mb-4">
+                    <li>No need to arrange finances for medical treatment</li>
+                    <li>Freedom to get quality treatment without financial worry</li>
+                    <li>Easy discharge process with direct bill clearance</li>
+                    <li>Now available at both network and non-network hospitals (with certain conditions)</li>
+                </ul>
+                
+                <p>To find a TATA AIG network hospital near you, please contact us or visit the official TATA AIG website.</p>
+            </div>
+            <a href="#quote" class="btn-primary block text-center" onclick="closePage()">GET YOUR QUOTE</a>
+        </div>
+    </div>
+
+    <!-- Claims Process Page -->
+    <div id="claims-process-page" class="claims-process-page modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closePage()">&times;</span>
+            <h2 class="text-2xl font-bold mb-4">Health Insurance Claims Process</h2>
+            <div class="mb-6">
+                <p class="mb-4">Understanding the claims process is essential for a smooth experience when you need to use your health insurance. TATA AIG offers two main types of claim processes:</p>
+                
+                <h3 class="text-xl font-bold mb-2">1. Cashless Claims Process</h3>
+                <p class="mb-3">Available at TATA AIG's network hospitals, allowing you to receive treatment without paying out of pocket.</p>
+                
+                <h4 class="font-bold mb-2">For Planned Hospitalization:</h4>
+                <ol class="list-decimal pl-5 mb-3">
+                    <li>Submit the cashless claim form to TATA AIG at least 5 days before treatment</li>
+                    <li>Wait for the confirmation letter from the insurer</li>
+                    <li>Submit your health card and confirmation letter on admission day</li>
+                    <li>TATA AIG will directly settle the bills with the hospital</li>
+                </ol>
+                
+                <h4 class="font-bold mb-2">For Emergency Hospitalization:</h4>
+                <ol class="list-decimal pl-5 mb-3">
+                    <li>Inform TATA AIG within 24 hours of hospitalization</li>
+                    <li>The hospital will fill out and submit the cashless claim request form</li>
+                    <li>TATA AIG will issue an authorization letter to the hospital</li>
+                    <li>Bills will be settled directly between TATA AIG and the hospital</li>
+                </ol>
+                
+                <h3 class="text-xl font-bold mb-2">2. Reimbursement Claims Process</h3>
+                <p class="mb-3">Used when treatment is received at a non-network hospital or when cashless facility isn't available.</p>
+                
+                <ol class="list-decimal pl-5 mb-4">
+                    <li>Verify all bill details before signing</li>
+                    <li>Collect all necessary documents:
+                        <ul class="list-disc pl-5 mt-1">
+                            <li>Completed claim form</li>
+                            <li>Insurance card/policy copy</li>
+                            <li>Medical certificate from doctor</li>
+                            <li>Pathological reports</li>
+                            <li>Hospital discharge card</li>
+                            <li>Original bills and receipts</li>
+                            <li>Original pharmacy bills</li>
+                            <li>Investigation reports</li>
+                            <li>FIR/MLC copy (for accident claims)</li>
+                            <li>NEFT details for claim settlement</li>
+                        </ul>
+                    </li>
+                    <li>Submit all documents to TATA AIG or their designated TPA</li>
+                    <li>Processing takes about 21 days from document submission</li>
+                </ol>
+                
+                <p class="font-bold mb-2">Address for Document Submission:</p>
+                <p class="mb-4">
+                    TAGIC Health Claims,<br>
+                    TATA AIG General Insurance Company Limited,<br>
+                    5th and 6th Floor, Imperial Towers, H.No 7-1-6-617/A,<br>
+                    GHMC No - 615,616, Ameerpet, Hyderabad 500016, Telangana
+                </p>
+                
+                <p>If you have any questions about the claims process, please contact us for personalized assistance.</p>
+            </div>
+            <a href="#quote" class="btn-primary block text-center" onclick="closePage()">GET YOUR QUOTE</a>
+        </div>
+    </div>
+
+    <!-- Privacy Policy Page -->
+    <div id="privacy-policy-page" class="privacy-policy-page modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closePage()">&times;</span>
+            <h2 class="text-2xl font-bold mb-4">Privacy Policy</h2>
+            <div class="mb-6">
+                <p class="mb-4">Tata AIG General Insurance Company Limited (referred to as "Tata AIG") is committed to protecting the privacy of every individual who visits our website and have taken reasonable steps to protect your Personal Information and/or Sensitive Personal Data or Information.</p>
+                
+                <h3 class="text-xl font-bold mb-2">This Privacy policy covers the following</h3>
+                <ul class="list-disc pl-5 mb-4">
+                    <li>Collection of Personal Information including Sensitive personal Data or Information.</li>
+                    <li>Use of your Personal Information.</li>
+                    <li>Disclosure of Personal Information.</li>
+                    <li>Protection of your Personal Information.</li>
+                    <li>Review and updation of Personal Information.</li>
+                    <li>Changes to our Privacy Policy.</li>
+                </ul>
+                
+                <h3 class="text-xl font-bold mb-2">Collection of Personal Information</h3>
+                <p class="mb-4">We and our authorized third parties may collect different types of Personal Information and Sensitive personal Data or Information, as required under laws and regulation and also based on your interest in our insurance products and services and our business relationship with you.</p>
+                
+                <p class="mb-2">This may include:</p>
+                <ul class="list-disc pl-5 mb-4">
+                    <li><strong>Personal Information:</strong> Your name, Age, Gender, Date of Birth, Photographs, Password to Tata AIG Customer Portal, etc.</li>
+                    <li><strong>Contact Information:</strong> Your address, Telephone numbers, Email id etc.</li>
+                    <li><strong>Financial Information:</strong> Details pertaining to your bank account, credit/debit cards, Payment Instruments, Annual Income, etc.</li>
+                    <li><strong>Health Information:</strong> Your Height, Weight, Illness/diseases, Medical Test Reports etc.</li>
+                </ul>
+                
+                <p>In case you do not provide your information or consent for usage of personal information or later on withdraw your consent for usage of the personal information so collected, Tata AIG reserves the right to discontinue/cancel the insurance policy /services for which, the said information was sought.</p>
+                
+                <p class="mt-4">For the complete privacy policy, please visit the <a href="https://www.tataaig.com/privacy-policy" target="_blank" class="text-blue-600 underline">official TATA AIG website</a>.</p>
+            </div>
+            <a href="#quote" class="btn-primary block text-center" onclick="closePage()">GET YOUR QUOTE</a>
+        </div>
+    </div>
+
+    <!-- Terms & Conditions Page -->
+    <div id="terms-page" class="terms-page modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closePage()">&times;</span>
+            <h2 class="text-2xl font-bold mb-4">Terms & Conditions</h2>
+            <div class="mb-6">
+                <p class="mb-4">By using this website, you acknowledge your assent to the following conditions of use without limitation or qualification. Please read these conditions carefully before using this website. These terms and conditions may be revised at any time by updating this posting. You are bound by any such revisions and should therefore periodically visit this page to review the then current terms and conditions to which you are bound.</p>
+                
+                <h3 class="text-xl font-bold mb-2">Disclaimer</h3>
+                <p class="mb-4">TO THE FULLEST EXTENT PERMISSIBLE PURSUANT TO APPLICABLE LAW, THE MATERIALS ON THIS WEBSITE ARE PROVIDED "AS IS" AND WITHOUT WARRANTIES OF ANY KIND EITHER EXPRESSED OR IMPLIED AND TATA AIG GENERAL INSURANCE COMPANY LTD. AND ITS SUBSIDIARIES AND AFFILIATES, DISCLAIM ALL WARRANTIES, EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.</p>
+                
+                <p class="mb-4">Tata AIG does not warrant that the functions contained in the materials will be uninterrupted or error-free, that defects will be corrected, or that this website or the server that makes it available are free of viruses or other harmful components. The information and descriptions contained herein are not intended to be complete descriptions of all terms, exclusions and conditions applicable to the products and services, but are provided solely for general informational purposes.</p>
+                
+                <h3 class="text-xl font-bold mb-2">Limitation Of Liability</h3>
+                <p class="mb-4">While Tata AIG uses reasonable efforts to include accurate and up to date information on this website, errors or omissions sometimes occur. Under no circumstances, including, but not limited to, negligence, shall Tata AIG or any party involved in creating, producing, or delivering the website be liable to you for any direct, incidental, consequential, indirect, or punitive damages that result from the use of, or the inability to use, the materials on this website.</p>
+                
+                <h3 class="text-xl font-bold mb-2">Restrictions On Use Of Materials</h3>
+                <p class="mb-4">This website is owned and operated by Tata AIG. Except as otherwise expressly permitted by Tata AIG, no materials from this website or any website owned, operated, licensed or controlled by Tata AIG may be copied, reproduced, republished, uploaded, posted, transmitted, or distributed in any way.</p>
+                
+                <p class="mt-4">For the complete terms and conditions, please visit the <a href="https://www.tataaig.com/terms-of-use" target="_blank" class="text-blue-600 underline">official TATA AIG website</a>.</p>
+            </div>
+            <a href="#quote" class="btn-primary block text-center" onclick="closePage()">GET YOUR QUOTE</a>
+        </div>
+    </div>
+
+    <!-- Grievance Redressal Page -->
+    <div id="grievance-page" class="grievance-page modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closePage()">&times;</span>
+            <h2 class="text-2xl font-bold mb-4">Grievance Redressal Policy</h2>
+            <div class="mb-6">
+                <p class="mb-4">We strive to provide the best customer service and resolve all issues promptly. However, if you have a complaint that has not been addressed to your satisfaction, please follow these steps:</p>
+                
+                <h3 class="text-xl font-bold mb-2">Complaint Resolution Process</h3>
+                <ol class="list-decimal pl-5 mb-4">
+                    <li>Contact our customer service desk at <a href="mailto:healthclaimsupport@tataaig.com" class="text-blue-600 underline">healthclaimsupport@tataaig.com</a></li>
+                    <li>Call our 24x7 Toll Free Number 1800 266 7780</li>
+                    <li>Senior Citizens can call our dedicated line at 1800 22 9966</li>
+                    <li>If you don't receive a satisfactory response, you can write to the Head - Customer Services at <a href="mailto:head.customerservices@tataaig.com" class="text-blue-600 underline">head.customerservices@tataaig.com</a></li>
+                </ol>
+                
+                <p class="mb-4">After examining the matter, we will send you our final response within 7 days from the date of receipt of your complaint.</p>
+                
+                <h3 class="text-xl font-bold mb-2">Insurance Ombudsman</h3>
+                <p class="mb-4">Within 14 days of lodging a complaint with us, if you do not get a satisfactory response or you wish to pursue other avenues for redressal of grievances, you may approach the Insurance Ombudsman appointed by IRDA under the Insurance Ombudsman Scheme.</p>
+                
+                <p>For the complete grievance redressal policy and to obtain details of the Insurance Ombudsman located at various centers, please visit the <a href="https://www.tataaig.com/grievance-redressal-policy" target="_blank" class="text-blue-600 underline">official TATA AIG website</a>.</p>
+            </div>
+            <a href="#quote" class="btn-primary block text-center" onclick="closePage()">GET YOUR QUOTE</a>
+        </div>
+    </div>
+
+    <!-- Disclaimer Page -->
+    <div id="disclaimer-page" class="disclaimer-page modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closePage()">&times;</span>
+            <h2 class="text-2xl font-bold mb-4">Disclaimer</h2>
+            <div class="mb-6">
+                <p class="mb-4">Insurance is the subject matter of the solicitation. Purchase of Tata AIG General Insurance Company Limited products are purely on voluntary basis. For more details on risk factors, terms and conditions please read sales brochure carefully before concluding a sale.</p>
+                
+                <h3 class="text-xl font-bold mb-2">Terms of Use</h3>
+                <p class="mb-4">By using this website, you acknowledge your assent to the following conditions of use without limitation or qualification. Please read these conditions carefully before using this website. These terms and conditions may be revised at any time by updating this posting. You are bound by any such revisions and should therefore periodically visit this page to review the then current terms and conditions to which you are bound.</p>
+                
+                <h3 class="text-xl font-bold mb-2">Privacy</h3>
+                <p class="mb-4">Any personal information you transmit to Tata AIG General Insurance Company Limited and its subsidiaries and affiliates, via this website will only be used for purposes of processing your application, the assessment and processing of claims and any other administration relevant to any policy issued by Tata AIG General Insurance Company Limited.</p>
+                
+                <h3 class="text-xl font-bold mb-2">Tax</h3>
+                <p class="mb-4">The premium amount paid under this policy qualifies for deduction under 80D of Income Tax Act, 1961 as amended. This benefit is not applicable for premium paid in cash/ or by demand draft. Tax benefits are subject to changes in Income Tax Law.</p>
+                
+                <h3 class="text-xl font-bold mb-2">Prohibition of Rebates</h3>
+                <p class="mb-4">Section 41 of the Insurance Act, 1938 as amended by Insurance Laws (Amendment) Act, 2015:</p>
+                <ul class="list-disc pl-5 mb-4">
+                    <li>No person shall allow or offer to allow, either directly or indirectly, as an inducement to any person to take out or renew or continue an insurance in respect of any kind of risk relating to lives or property in India, any rebate of the whole or part of the commission payable or any rebate of the premium shown on the policy, nor shall any person taking out or renewing or continuing a policy accept any rebate, except such rebate as may be allowed in accordance with the published prospectuses or tables of the insurer.</li>
+                    <li>Any person making default in complying with the provisions of this section shall be liable for a penalty which may extend to ten lakh rupees.</li>
+                </ul>
+                
+                <h3 class="text-xl font-bold mb-2">Broker Disclaimer</h3>
+                <p class="mb-4">TERRANEST.HEALTH is an independent insurance broker and not affiliated with TATA AIG General Insurance Company Limited. We provide information and assistance in selecting appropriate insurance products but the final decision rests with the customer. The information provided on this website is for general informational purposes only and should not be considered as financial advice.</p>
+                
+                <p>For the complete disclaimer, please visit the <a href="https://www.tataaig.com/disclaimers" target="_blank" class="text-blue-600 underline">official TATA AIG website</a>.</p>
+            </div>
+            <a href="#quote" class="btn-primary block text-center" onclick="closePage()">GET YOUR QUOTE</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Quick Links</h4>
+                    <a href="#" onclick="showPage('about')" class="footer-link">About Us</a>
+                    <a href="#" onclick="showPage('plans')" class="footer-link">Our Plans</a>
+                    <a href="#" onclick="showPage('network-hospitals')" class="footer-link">Network Hospitals</a>
+                    <a href="#" onclick="showPage('claims-process')" class="footer-link">Claims Process</a>
+                </div>
+                
+                <!-- Legal -->
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Legal</h4>
+                    <a href="#" onclick="showPage('privacy-policy')" class="footer-link">Privacy Policy</a>
+                    <a href="#" onclick="showPage('terms')" class="footer-link">Terms & Conditions</a>
+                    <a href="#" onclick="showPage('grievance')" class="footer-link">Grievance Redressal</a>
+                    <a href="#" onclick="showPage('disclaimer')" class="footer-link">Disclaimer</a>
+                </div>
+                
+                <!-- Contact Us -->
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Contact Us</h4>
+
+                     <div class="flex items-center mb-2">
+                        <i class="fas fa-phone-alt mr-2"></i>
+                        <a href="tel:+917012446315" class="footer-link">+91 7012446315</a>
+                    </div>
+
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-envelope mr-2"></i>
+                        <a href="mailto:terranest.health@gmail.com" class="footer-link">terranest.health@gmail.com</a>
+                    </div>
+
+                    <a href="https://wa.me/917012446315" target="_blank" class="btn-accent inline-block">
+                    <i class="fab fa-whatsapp mr-2"></i> Need help? Chat with us on WhatsApp!
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-6 text-center">
+                <p>&copy; 2025 TERRANEST.HEALTH. All Rights Reserved.</p>
+                <p class="mt-2 text-sm">TERRANEST.HEALTH is an independent insurance broker. Not an official TATA AIG website.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Show/hide mobile menu
+        function toggleMobileMenu() {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            mobileMenu.classList.toggle('active');
+        }
+        
+        // Show plan details
+        function showPlanDetails(planId) {
+            const planModal = document.getElementById(`${planId}-details`);
+            planModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Close plan details
+        function closePlanDetails() {
+            const planModals = document.querySelectorAll('.plan-details');
+            planModals.forEach(modal => {
+                modal.style.display = 'none';
+            });
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Show page
+        function showPage(pageId) {
+            const pageModal = document.getElementById(`${pageId}-page`);
+            pageModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Close page
+        function closePage() {
+            const pageModals = document.querySelectorAll('.modal');
+            pageModals.forEach(modal => {
+                modal.style.display = 'none';
+            });
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+        
+        // Toggle admin instructions visibility with keyboard shortcut
+        document.addEventListener('keydown', function(event) {
+            if (event.ctrlKey && event.shiftKey && event.key === 'I') {
+                const adminInstructions = document.getElementById('admin-instructions');
+                adminInstructions.classList.toggle('show');
+            }
+        });
+        
+                // Form submission with Google Sheets integration
+                document.getElementById('quoteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form data from the HTML form
+            const htmlFormData = {
+                fullName: document.getElementById('fullName').value,
+                dob: document.getElementById('dob').value, // Will be in YYYY-MM-DD format
+                place: document.getElementById('place').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value
+            };
+
+            // This is your Google Form's submission URL
+            const googleFormActionUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfDhOkG9ue__ZsPNHrMIlrkM5pX9wLhlgrXpSUq5jCYbits7g/formResponse";
+
+            // Create FormData object to send to Google Forms
+            const googleSubmitData = new FormData();
+            googleSubmitData.append('entry.1836318530', htmlFormData.fullName);    // Full Name
+            googleSubmitData.append('entry.1757452877', htmlFormData.dob);         // Date of Birth
+            googleSubmitData.append('entry.1619490796', htmlFormData.place);       // Place
+            googleSubmitData.append('entry.659131422', htmlFormData.phone);        // Phone Number
+            googleSubmitData.append('entry.356134562', htmlFormData.email);       // Email Address
+
+            fetch(googleFormActionUrl, {
+                method: 'POST',
+                body: googleSubmitData,
+                mode: 'no-cors' // Important: Google Forms doesn't support CORS for direct fetch,
+                                // so 'no-cors' sends the request but doesn't let you read the response.
+                                // This means the .then() block will execute even if Google returns an error page,
+                                // but the data should still be submitted if the URL and entry IDs are correct.
+            })
+            .then(response => {
+                // Assume submission was successful because 'no-cors' mode doesn't give us details
+                console.log('Form submitted to Google Forms (assumed success due to no-cors).');
+                // Show thank you message on your page
+                document.getElementById('quoteForm').style.display = 'none';
+                document.getElementById('thankYouMessage').style.display = 'block';
+                // Clear your HTML form
+                document.getElementById('quoteForm').reset();
+            })
+            .catch(error => {
+                // This catch block might not be hit for Google Form submission errors with 'no-cors'
+                // It would typically catch network errors before the request is even sent.
+                console.error('Error submitting form:', error);
+                alert('There was an error submitting your form. Please check your internet connection and try again.');
+                // Optionally, you might want to re-enable the form here if you don't hide it
+                // document.getElementById('quoteForm').style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>
