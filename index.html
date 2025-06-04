@@ -345,7 +345,7 @@
         <span class="close-menu" onclick="toggleMobileMenu()"><i class="fas fa-times"></i></span>
         <nav>
             <a href="#home" class="mobile-menu-link" onclick="toggleMobileMenu()">HOME</a>
-            <a href="#plans" class="mobile-menu-link" onclick="toggleMobileMenu()">OUR PLANS</a>
+            <a href="#plans" class="mobile-menu-link" onclick="showPage('plans'); toggleMobileMenu()">OUR PLANS</a>
             <a href="#" class="mobile-menu-link" onclick="showPage('about'); toggleMobileMenu()">ABOUT US</a>
             <a href="#quote" class="mobile-menu-link" onclick="toggleMobileMenu()">GET MY QUOTE</a>
         </nav>
@@ -357,31 +357,30 @@
         <section id="home" class="section bg-gray-100">
             <div class="container mx-auto">
                 <div class="text-center mb-8">
-                    <h1 class="text-4xl font-bold mb-4">Secure Your Health with TATA AIG Insurance</h1>
-                    <p class="text-xl mb-6">Get Your Free Quote Today – Fast, Simple & Trusted by Millions!</p>
-                    <div class="flex flex-wrap justify-center gap-6 mb-8">
+                    <h1 class="text-3xl sm:text-4xl font-bold mb-4">Secure Your Health with TATA AIG Insurance</h1>
+                    <p class="text-lg sm:text-xl mb-6">Get Your Free Quote Today – Fast, Simple & Trusted by Millions!</p>
+                    <div class="flex flex-wrap justify-center gap-x-6 gap-y-4 mb-8">
                         <div class="flex items-center">
-                            <i class="fas fa-hospital text-blue-600 mr-2"></i>
-                            <span>✅ 5400+ Network Hospitals</span>
+                            <i class="fas fa-hospital text-blue-600 mr-2 text-lg md:text-xl"></i>
+                            <span class="text-sm md:text-base">✅ 5400+ Network Hospitals</span>
                         </div>
                         <div class="flex items-center">
-                            <i class="fas fa-money-check-alt text-blue-600 mr-2"></i>
-                            <span>✅ Cashless Claims Process</span>
+                            <i class="fas fa-money-check-alt text-blue-600 mr-2 text-lg md:text-xl"></i>
+                            <span class="text-sm md:text-base">✅ Cashless Claims Process</span>
                         </div>
                         <div class="flex items-center">
-                            <i class="fas fa-tax text-blue-600 mr-2"></i>
-                            <span>✅ Tax Benefits under 80D</span>
+                            <i class="fas fa-dollar text-blue-600 mr-2 text-lg md:text-xl"></i>
+                            <span class="text-sm md:text-base">✅ Tax Benefits under 80D</span>
                         </div>
                         <div class="flex items-center">
-                            <i class="fas fa-headset text-blue-600 mr-2"></i>
-                            <span>✅ Expert Support for Hassle-free Process</span>
+                            <i class="fas fa-headset text-blue-600 mr-2 text-lg md:text-xl"></i>
+                            <span class="text-sm md:text-base">✅ Expert Support for Hassle-free Process</span>
                         </div>
                     </div>
                     <a href="#quote" class="btn-primary text-lg">Get Your Free Quote</a>
                 </div>
             </div>
         </section>
-
 <!-- Why Do You Need a Health Insurance Policy Section -->
 <section class="section bg-white py-16">
     <div class="container mx-auto px-4">
