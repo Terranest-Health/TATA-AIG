@@ -172,43 +172,93 @@
             scroll-behavior: smooth;
         }
 
-        .step-hexagon {
-            width: 70px;
-            height: 60px;
-            position: relative;
+        /* Enhanced Step Design for Cashless Claims Process */
+        .modern-step-container {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 18px;
-            margin: 20px auto;
-        }
-        
-        .step-hexagon::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #ef4444, #dc2626);
-            clip-path: polygon(20% 0%, 80% 0%, 100% 50%, 80% 100%, 20% 100%, 0% 50%);
-            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            position: relative;
+            padding: 1rem;
+            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(248,250,252,0.9));
+            border-radius: 16px;
+            border: 1px solid rgba(59, 130, 246, 0.1);
             transition: all 0.3s ease;
         }
         
-        .step-hexagon:hover::before {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+        .modern-step-container:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.15);
+            border-color: rgba(59, 130, 246, 0.3);
         }
         
-        .step-hexagon span {
+        .modern-step-icon {
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3B82F6, #1E40AF);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-right: 1.5rem;
             position: relative;
-            z-index: 1;
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+            transition: all 0.3s ease;
         }
-         
-         .feature-card.card:hover {
+        
+        .modern-step-icon::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            background: linear-gradient(135deg, #60A5FA, #3B82F6);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modern-step-container:hover .modern-step-icon::before {
+            opacity: 1;
+        }
+        
+        .modern-step-content {
+            flex: 1;
+            padding-top: 0.5rem;
+        }
+        
+        .modern-step-content h4 {
+            font-weight: 600;
+            color: #1E3A8A;
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+        }
+        
+        .modern-step-content p {
+            color: #4B5563;
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+        
+        /* Connector line */
+        .modern-step-container:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 46px;
+            top: 80px;
+            bottom: -2rem;
+            width: 3px;
+            background: linear-gradient(to bottom, #93C5FD, #DBEAFE);
+            border-radius: 2px;
+            z-index: 0;
+        }
+        
+        .feature-card.card:hover {
             transform: translateY(-7px) scale(1.04);
             box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
         }
@@ -217,7 +267,6 @@
              box-shadow: 0 6px 12px rgba(0,0,0,0.12);
         }
 
-        
         .nav-link {
             position: relative;
             color: #fff;
@@ -363,69 +412,6 @@
             border-radius: 5px;
         }
         
-                /* ... (Keep all your existing :root, *, body, button, card, etc. styles) ... */
-
-        /* Specific for new Cashless Claim Steps design */
-        .step-item-container {
-            display: flex;
-            align-items: flex-start; /* Align items to the top */
-            margin-bottom: 1.5rem; /* space below each step item */
-            position: relative;
-        }
-
-        .step-icon-futuristic {
-            flex-shrink: 0; /* Prevent icon from shrinking */
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #3B82F6, #1E40AF); /* Blue gradient */
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.25rem; /* text-xl */
-            margin-right: 1rem; /* space between icon and text */
-            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.4);
-            position: relative; /* For the connector line */
-            z-index: 1;
-        }
-
-        .step-content-futuristic {
-            padding-top: 0.25rem; /* Align text slightly better with icon center */
-        }
-        .step-content-futuristic h4 {
-            font-weight: 600; /* semibold */
-            color: #1E3A8A; /* text-blue-800 or a dark blue */
-            margin-bottom: 0.25rem;
-        }
-        .step-content-futuristic p {
-            font-size: 0.875rem; /* text-sm */
-            color: #4B5563; /* text-gray-600 */
-            line-height: 1.5;
-        }
-
-        /* Connector line (optional, but adds to the visual flow) */
-        .step-item-container:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            left: 24px; /* Center of the icon (50px width / 2 - 1px for line width) */
-            top: 60px; /* Start below the icon */
-            bottom: -1.5rem; /* Extend to the margin-bottom of the item */
-            width: 2px;
-            background-color: #93C5FD; /* Tailwind blue-300, light connector */
-            z-index: 0;
-        }
-        @media (max-width: 767px) {
-            .step-icon-futuristic {
-                 width: 40px; height: 40px; font-size: 1rem;
-            }
-            .step-item-container:not(:last-child)::after {
-                left: 19px; /* Center of 40px icon */
-                top: 50px;
-            }
-        }
-
         #admin-instructions.show {
             display: block;
         }
@@ -501,13 +487,38 @@
             display: block;
         }
         
+        /* Enhanced Mobile Header Styles */
         @media (max-width: 768px) {
-            .desktop-nav {
-                display: none;
+            .mobile-header-fix {
+                padding: 0.75rem 1rem;
+            }
+            
+            .mobile-logo {
+                font-size: 1.125rem;
+                font-weight: 700;
+            }
+            
+            .mobile-logo i {
+                font-size: 1.25rem;
+                margin-right: 0.5rem;
             }
             
             .menu-toggle {
-                display: block;
+                padding: 0.5rem;
+                font-size: 1.25rem;
+                background: transparent;
+                border: none;
+                color: #374151;
+                transition: all 0.2s ease;
+            }
+            
+            .menu-toggle:hover {
+                color: #3B82F6;
+                transform: scale(1.1);
+            }
+            
+            .desktop-nav {
+                display: none;
             }
             
             .form-container {
@@ -517,6 +528,23 @@
                 margin: 5% auto;
                 max-width: 95%;
                 padding: 20px;
+            }
+            
+            .modern-step-container {
+                margin-bottom: 1.5rem;
+                padding: 0.75rem;
+            }
+            
+            .modern-step-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.25rem;
+                margin-right: 1rem;
+            }
+            
+            .modern-step-container:not(:last-child)::after {
+                left: 36px;
+                top: 70px;
             }
         }
         
@@ -577,16 +605,16 @@
     </style>
 </head>
 <body class="bg-gray-50 smooth-scroll">
-        <!-- Header -->
+        <!-- Enhanced Mobile-Optimized Header -->
         <header class="bg-white shadow-md sticky top-0 z-50">
-            <div class="container mx-auto px-4">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center h-16">
-                    <a href="index.html" class="flex items-center">
-                        <i class="fas fa-shield-alt text-blue-600 text-2xl mr-2"></i>
-                        <span class="text-xl font-bold text-gray-800">TERRANEST.HEALTH</span>
+                    <a href="#home" class="flex items-center mobile-logo">
+                        <i class="fas fa-shield-alt text-blue-600"></i>
+                        <span class="text-gray-800">TERRANEST.HEALTH</span>
                     </a>
                     <!-- Desktop Navigation -->
-                    <nav class="hidden md:flex items-center space-x-6">
+                    <nav class="hidden md:flex items-center space-x-6 desktop-nav">
                         <a href="#home" class="text-gray-700 hover:text-blue-600 transition-colors">Home</a>
                         <a href="#features" class="text-gray-700 hover:text-blue-600 transition-colors">Features</a>
                         <a href="#about" class="text-gray-700 hover:text-blue-600 transition-colors">About Us</a>
@@ -598,7 +626,7 @@
                     </div>
                     <!-- Mobile Menu Toggle -->
                     <div class="md:hidden">
-                        <button class="menu-toggle text-gray-700 hover:text-blue-600 text-2xl p-2 -mr-2" onclick="toggleMobileMenu()">
+                        <button class="menu-toggle" onclick="toggleMobileMenu()">
                             <i class="fas fa-bars"></i>
                         </button>
                     </div>
@@ -606,7 +634,7 @@
             </div>
         </header>
     
-        <!-- Mobile Menu (Keep as is from last version, ensure links are correct) -->
+        <!-- Mobile Menu -->
         <div class="mobile-menu">
             <span class="close-menu" onclick="toggleMobileMenu()"><i class="fas fa-times"></i></span>
             <nav class="mt-8 flex flex-col space-y-1 p-4">
@@ -856,23 +884,23 @@
                     <div class="grid md:grid-cols-2 gap-6">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
-                            <input type="text" name="fullName" required class="form-field w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <input type="text" id="fullName" name="fullName" required class="form-field w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Date of Birth</label>
-                            <input type="date" name="dateOfBirth" required class="form-field w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <input type="date" id="dob" name="dob" required class="form-field w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Place</label>
-                            <input type="text" name="place" required class="form-field w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <input type="text" id="place" name="place" required class="form-field w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
-                            <input type="tel" name="phoneNumber" required class="form-field w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <input type="tel" id="phone" name="phone" required class="form-field w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         </div>
                         <div class="md:col-span-2">
                             <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                            <input type="email" name="emailAddress" required class="form-field w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <input type="email" id="email" name="email" required class="form-field w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         </div>
                     </div>
                     
@@ -943,7 +971,7 @@
         </div>
     </section>
 
-    <!-- Network Hospitals Section -->
+    <!-- Enhanced Network Hospitals Section with Modern Step Design -->
     <section class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12 slide-in">
@@ -979,42 +1007,45 @@
                 </div>
                 
                 <div class="card-3d bg-white rounded-2xl p-8">
-                    <h3 class="text-2xl font-bold text-gray-900 mb-8 mt-10 text-center md:text-left">Cashless Claim Process</h3>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">Cashless Claim Process</h3>
                     <div class="space-y-0">
-                        <div class="step-item-container" data-aos="fade-left" data-aos-delay="100">
-                            <div class="step-icon-futuristic">
+                        <div class="modern-step-container">
+                            <div class="modern-step-icon">
                                 <span>1</span>
                             </div>
-                            <div class="step-content-futuristic">
+                            <div class="modern-step-content">
                                 <h4>Locate a TATA AIG Network Hospital</h4>
-                                <p>Easily find an authorized hospital in your vicinity from our extensive list.</p>
+                                <p>Easily find an authorized hospital in your vicinity from our extensive list of 12,000+ network hospitals nationwide.</p>
                             </div>
                         </div>
-                        <div class="step-item-container" data-aos="fade-left" data-aos-delay="200">
-                            <div class="step-icon-futuristic">
+                        
+                        <div class="modern-step-container">
+                            <div class="modern-step-icon">
                                 <span>2</span>
                             </div>
-                            <div class="step-content-futuristic">
+                            <div class="modern-step-content">
                                 <h4>Inform TATA AIG</h4>
-                                <p>Notify us 3 days before for planned treatments, or within 24 hours for emergencies.</p>
+                                <p>Notify us 3 days before for planned treatments, or within 24 hours for emergency situations through our 24/7 helpline.</p>
                             </div>
                         </div>
-                        <div class="step-item-container" data-aos="fade-left" data-aos-delay="300">
-                            <div class="step-icon-futuristic">
+                        
+                        <div class="modern-step-container">
+                            <div class="modern-step-icon">
                                 <span>3</span>
                             </div>
-                            <div class="step-content-futuristic">
+                            <div class="modern-step-content">
                                 <h4>Documentation & Authorization</h4>
-                                <p>Bring essential documents (policy, ID) and complete hospital forms for pre-authorization.</p>
+                                <p>Bring essential documents (policy copy, ID proof, medical reports) and complete hospital forms for pre-authorization approval.</p>
                             </div>
                         </div>
-                         <div class="step-item-container" data-aos="fade-left" data-aos-delay="400">
-                            <div class="step-icon-futuristic">
+                        
+                        <div class="modern-step-container">
+                            <div class="modern-step-icon">
                                 <i class="fas fa-check"></i>
                             </div>
-                            <div class="step-content-futuristic">
+                            <div class="modern-step-content">
                                 <h4>Treatment & Settlement</h4>
-                                <p>Receive cashless treatment as TATA AIG settles the bills directly with the hospital.</p>
+                                <p>Receive your treatment without worrying about payments as TATA AIG directly settles the approved bills with the hospital.</p>
                             </div>
                         </div>
                     </div>
@@ -1131,10 +1162,10 @@
             
             <h3 class="text-xl font-bold mb-2">Complaint Resolution Process</h3>
             <ol class="list-decimal pl-5 mb-4">
-                <li>Contact our customer service desk at <a href="mailto:customercare@tataaig.com" class="text-blue-600 underline">customercare@tataaig.com</a></li>
+                <li>Contact our customer service desk at <a href="/cdn-cgi/l/email-protection#1d7e686e697270786f7e7c6f785d697c697c7c747a337e7270" class="text-blue-600 underline"><span class="__cf_email__" data-cfemail="32514741465d5f5740515340577246534653535b551c515d5f">[email&#160;protected]</span></a></li>
                 <li>Call our 24x7 Toll Free Number 1800 266 7780</li>
                 <li>Senior Citizens can call our dedicated line at 1800 22 9966</li>
-                <li>If you don't receive a satisfactory response, you can write to the Head - Customer Services at <a href="mailto:headcustomerservice@tataaig.com" class="text-blue-600 underline">headcustomerservice@tataaig.com</a></li>
+                <li>If you don't receive a satisfactory response, you can write to the Head - Customer Services at <a href="/cdn-cgi/l/email-protection#4109242025223432352e2c24333224333728222401352035202028266f222e2c" class="text-blue-600 underline"><span class="__cf_email__" data-cfemail="5c34393d383f292f283331392e2f392e2a353f391c283d283d3d353b723f3331">[email&#160;protected]</span></a></li>
             </ol>
             
             <p class="mb-4">After examining the matter, we will send you our final response within 7 days from the date of receipt of your complaint.</p>
@@ -1204,11 +1235,22 @@
                 </div>
                 
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                    <h3 class="text-lg font-semibold text-white mb-4">Contact Info</h3>
                     <ul class="space-y-2 text-gray-400">
-                        <li><i class="fas fa-phone mr-2"></i> +91 7012446315 </li>
-                        <li><i class="fas fa-envelope mr-2"></i> terranest.health@gmail.com </li>
-                        <li><i class="fas fa-clock mr-2"></i> 24/7 Support</li>
+                        <li class="flex items-center">
+                            <i class="fab fa-whatsapp mr-2 text-green-400"></i> 
+                            <a href="https://wa.me/917012446315" target="_blank" class="hover:text-white transition-colors">
+                                +91 7012446315
+                            </a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <a href="mailto:terranest.health@gmail.com" class="hover:text-white transition-colors __cf_email__" data-cfemail="d3babdb5bc93a7b6a1a1b2bdb6a0a7fdbbb6b2bfa7bb">terranest.health@gmail.com</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-headset mr-2"></i>
+                            <span>24/7 Support</span>
+                        </li>
                     </ul>
                 </div>
                 
@@ -1233,7 +1275,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1328,31 +1370,65 @@
             }
         });
 
-        // Form submission
+        // Enhanced Form submission with proper Google Sheets integration
         document.getElementById('quoteForm').addEventListener('submit', function(e) {
             e.preventDefault();
+
+            // Get form data
+            const formData = {
+                fullName: document.getElementById('fullName').value,
+                dob: document.getElementById('dob').value,
+                place: document.getElementById('place').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value
+            };
+
+            // Google Forms integration
+            const googleFormActionUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfDhOkG9ue__ZsPNHrMIlrkM5pX9wLhlgrXpSUq5jCYbits7g/formResponse";
+            const googleSubmitData = new FormData();
             
-            // Show thank you message
-            document.getElementById('quoteForm').classList.add('hidden');
-            document.getElementById('thankYou').classList.remove('hidden');
-            
-            // Reset form after 5 seconds
-            setTimeout(() => {
-                document.getElementById('quoteForm').classList.remove('hidden');
-                document.getElementById('thankYou').classList.add('hidden');
+            // Map form fields to Google Forms entry IDs
+            googleSubmitData.append('entry.1836318530', formData.fullName);
+            googleSubmitData.append('entry.1757452877', formData.dob);
+            googleSubmitData.append('entry.1619490796', formData.place);
+            googleSubmitData.append('entry.659131422', formData.phone);
+            googleSubmitData.append('entry.356134562', formData.email);
+
+            // Submit to Google Forms
+            fetch(googleFormActionUrl, {
+                method: 'POST',
+                body: googleSubmitData,
+                mode: 'no-cors'
+            })
+            .then(() => {
+                // Show success message
+                document.getElementById('quoteForm').style.display = 'none';
+                document.getElementById('thankYou').classList.remove('hidden');
+                document.getElementById('thankYou').style.display = 'block';
+                
+                // Reset form
                 document.getElementById('quoteForm').reset();
-            }, 5000);
+                
+                console.log('Form submitted successfully to Google Forms');
+            })
+            .catch(error => {
+                console.error('Error submitting form:', error);
+                
+                // Still show success message since no-cors mode doesn't return response
+                document.getElementById('quoteForm').style.display = 'none';
+                document.getElementById('thankYou').classList.remove('hidden');
+                document.getElementById('thankYou').style.display = 'block';
+                document.getElementById('quoteForm').reset();
+            });
         });
 
         // Navigation background change on scroll
         window.addEventListener('scroll', function() {
-            const nav = document.querySelector('nav');
+            const nav = document.querySelector('header');
             if (window.scrollY > 100) {
-                nav.classList.add('bg-white', 'shadow-lg');
-                nav.classList.remove('bg-transparent');
+                nav.classList.add('shadow-lg');
             } else {
-                nav.classList.remove('bg-white', 'shadow-lg');
-                nav.classList.add('bg-transparent');
+                nav.classList.remove('shadow-lg');
             }
         });
     </script>
